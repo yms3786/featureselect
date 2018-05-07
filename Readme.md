@@ -59,7 +59,7 @@ window and use from *FEATURESELECT*. Consider fig.1 and fig.2.
 
 Fig.1: run *FEATURESELECT*
 
-![](media/f6cce1a8e783882642f64ad74c1775ba.png)
+![2](https://user-images.githubusercontent.com/34372417/39719605-9528b2ce-51ee-11e8-828b-a17a75576355.jpg)
 
 Fig.2: *FEATURESELECT*
 
@@ -93,7 +93,7 @@ Fig.2 shows the *FEATURESELECT* software. This application has several sections:
     (in other words, if you don’t want feature selection), click on the *only
     apply SVM* button**.**
 
-    ![](media/c7ee1673e9a65c723a4b1fbc8b792974.png)
+    ![3](https://user-images.githubusercontent.com/34372417/39719653-b31b5bce-51ee-11e8-92c0-344730ff5728.jpg)
 
     Fig.3: learning parameter
 
@@ -104,7 +104,7 @@ Fig.2 shows the *FEATURESELECT* software. This application has several sections:
     of clicking on WCC algorithm will appear. Then you can set the algorithm
     parameters.
 
-    ![](media/de6ca02bda8354c1a1f1d4b6fdee8170.png)
+    ![4](https://user-images.githubusercontent.com/34372417/39719678-c7321af8-51ee-11e8-9d57-e94603b4d904.jpg)
 
     Fig.4: WCC's parameters
 
@@ -190,17 +190,16 @@ Fig.2 shows the *FEATURESELECT* software. This application has several sections:
 >   of the all algorithms on supposed input file located in *FEATURESELECT*
 >   directory.
 
-![F:\\LBB\\feature selection\\matlab\\help\\o1_regression.tif](media/22a41fb605399eb7de659df11e126e77.tiff)
+![5](https://user-images.githubusercontent.com/34372417/39719693-d6dd60ac-51ee-11e8-9b6a-c48e0d15e294.jpg)
 
 >   Fig.5: part of *description* file
 
-![F:\\LBB\\feature selection\\matlab\\help\\o2_regression.tif](media/4bf7aebb438f140d04a94cc58f0fecf3.tiff)
+![6](https://user-images.githubusercontent.com/34372417/39719725-ebdd35e0-51ee-11e8-9a4e-fa1820cef704.jpg)
 
 >   Fig.6: part of *tbls* file
 
-![](media/68d4b516b4e6b9c2e9f711de937897e9.tiff)
 
->   F:\\LBB\\feature selection\\matlab\\help\\evaluation.tif
+![7](https://user-images.githubusercontent.com/34372417/39719735-f92480fa-51ee-11e8-8259-02c94fa0fc6d.jpg)
 
 >   Fig.7: part of *evaluation* file (only for classification)
 
@@ -237,20 +236,15 @@ Fig.2 shows the *FEATURESELECT* software. This application has several sections:
 >   and ROC space are showed in fig.10. You can modify these plots using
 >   *view/property editor* menu.
 
-![](media/ecde077452f1488148cb67fa14a2bb94.tiff)
+![8](https://user-images.githubusercontent.com/34372417/39719796-33e201a4-51ef-11e8-8930-ccb376440830.jpg)
 
->   F:\\LBB\\feature selection\\matlab\\help\\classification.tif
 
 >   Fig.8: algorithms output for classification problem
 
-![](media/2130b65b6db5a7d02cd5405e1f1cbe02.tiff)
-
->   F:\\LBB\\feature selection\\matlab\\help\\regression.tif
+![9](https://user-images.githubusercontent.com/34372417/39719849-52df0dfe-51ef-11e8-9b90-9d0796c19574.jpg)
 
 >   Fig.9: algorithms output for regression problem
 
-![](media/58e8c9d0d9c78a46a59001f8e49e1f50.tiff)
-
->   F:\\LBB\\feature selection\\matlab\\help\\ROC.tif
+![10](https://user-images.githubusercontent.com/34372417/39719866-62a04e88-51ef-11e8-9143-3a10b363825e.jpg)
 
 >   Fig.10: ROC plot and ROC space

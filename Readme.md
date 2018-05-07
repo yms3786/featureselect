@@ -55,7 +55,7 @@ After installing the requirements, follow these stages:
 After installing the software, you can write "LBBFS" in the matlab command
 window and use from *FEATURESELECT*. Consider fig.1 and fig.2.
 
-![](media/2440008af808913464af5362a2587205.png)
+![1](https://user-images.githubusercontent.com/34372417/39718974-b757e43e-51ec-11e8-9cf2-5ee914f97488.jpg)
 
 Fig.1: run *FEATURESELECT*
 

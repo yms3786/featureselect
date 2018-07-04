@@ -22,7 +22,7 @@ function varargout = Selection(varargin)
 
 % Edit the above text to modify the response to help Selection
 
-% Last Modified by GUIDE v2.5 26-Sep-2017 08:48:45
+% Last Modified by GUIDE v2.5 13-Jun-2018 10:48:19
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -95,8 +95,6 @@ if x==1
     set(handles.uipanel23,'visible','on');
 end
 set(handles.popupmenu1,'value',13);
-
-
 
 
 function edit1_Callback(hObject, eventdata, handles)
@@ -253,12 +251,14 @@ global hamcawcc;
 global wccf;
 global wccc;
 global wcct;
+global enum;
 tic;
 str1='Please wait ...';
 str2='WCC is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -730,11 +730,13 @@ function pushbutton4_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 clc
 tic;
+global enum;
 str1='Please wait ...';
 str2='LCA is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -918,7 +920,9 @@ str1='Please wait ...';
 str2='GA is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -1210,7 +1214,9 @@ str1='Please wait ...';
 str2='PSO is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -1400,7 +1406,9 @@ str1='Please wait ...';
 str2='ACO is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -1592,7 +1600,9 @@ str1='Please wait ...';
 str2='ICA is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -1636,7 +1646,7 @@ hamcaica=[];
 countries=score(countries,input,label,tp,sv);
 imper=zeros(1,noi);
 imper=selectimper(countries,imper);
-ountries=moveica(countries,imper);
+countries=moveica(countries,imper);
 while noi>1
     countries=revoulation(countries,n);
     countries=moveica(countries,imper);
@@ -1766,7 +1776,9 @@ str1='Please wait ...';
 str2='LA is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -1987,7 +1999,9 @@ str1='Please wait ...';
 str2='HTS is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -2234,7 +2248,9 @@ str1='Please wait ...';
 str2='FOA is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -2398,7 +2414,9 @@ str1='Please wait ...';
 str2='DSOS is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -2563,7 +2581,9 @@ str1='Please wait ...';
 str2='CUK is running';
 str1=cellstr(str1);
 str2=cellstr(str2);
-st=[str2;str1];
+global enum;
+sstr=['Execution number is : ',num2str(enum)];
+st=[sstr;str2;str1];
 set(handles.listbox1,'string',st);
 pause(1);
 tp=get(handles.edit10,'string');
@@ -2807,9 +2827,9 @@ input(:,labelc)=[];
 particles=score(particles,input,label,tp,sv);
 x=get(handles.checkbox25,'value');
 if x==1
-st='The value of RMSEis: ';
+st='The value of RMSE is: ';
 else
-st='The value of accuracy is: ';    
+st='The value of Score is: ';    
 end
 if x==1
 st=strcat(st,num2str(particles(1,n+2)));
@@ -2822,6 +2842,9 @@ st2='The elapsed time of SVM based on seconds is :  ';
 st2=strcat(st2,num2str(toc));
 st3='The value of R^2 is :  ';
 st3=strcat(st3,num2str(particles(1,n+3)));
+if contains(sv,'-v')
+   st3='The accuracy is relative to cross validation'; 
+end
 set(handles.listbox1, 'String',[st;st2;st3]);
 clc
 
@@ -4061,6 +4084,19 @@ htsk=[];
 foak=[];
 gak=[];
 
+ind=get(handles.popupmenu3,'value');
+if ind==2
+    y_label='Accuracy';
+end
+if ind==3
+    y_label='Sensitivity';
+end
+if ind==4
+    y_label='Specificity';
+end
+if ind==5
+    y_label='Precision';
+end
 global hamwcc;
 global hamawcc;
 global hamcwcc;
@@ -4303,9 +4339,10 @@ hcuk=[];
 hacuk=[];
 ccuk=[];
 cacuk=[];
-
+global enum;
 p=str2num(get(handles.edit76,'string'));
 for i=1:max(p,2)
+enum=i;
 x=get(handles.checkbox12,'value');
 if x==1
     pushbutton2_Callback(hObject, eventdata, handles);
@@ -4402,7 +4439,7 @@ st2=cellstr(st2);
 ne = [st1;st2];
 set(handles.listbox1,'String',ne);
 
-figure;
+f1=figure;
 st='';
 st=cellstr(st);
 hold on;
@@ -4842,7 +4879,7 @@ pica= -pica;
 end
 
 res=[];
-res='This application has been developed in labratoary of systems biology and bioinformatics (LBB)';
+res='This application has been developed in laboratory of systems biology and bioinformatics (LBB)';
 res=cellstr(res);
 dline='---------------------------------------------------------------------------------------------';
 dline=cellstr(dline);
@@ -4864,46 +4901,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamwcc)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamawcc)];
    [h,pv,ci,stats]=ttest(pwcc);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(pwcc)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated population standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated population standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated population standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;wccc];
    ET=[ET;wcct];
@@ -4994,46 +5031,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamlca)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamalca)];
    [h,pv,ci,stats]=ttest(plca);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(plca)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated population standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated population standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated population standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;lcac];
    ET=[ET;lcat];
@@ -5124,46 +5161,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamga)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamaga)];
    [h,pv,ci,stats]=ttest(pga);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(pga)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated population standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated population standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated population standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;gac];
    ET=[ET;gat];
@@ -5254,46 +5291,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hampso)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamapso)];
    [h,pv,ci,stats]=ttest(ppso);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(ppso)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated population standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated population standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated population standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;psoc];
    ET=[ET;psot];
@@ -5384,46 +5421,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamaco)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamaaco)];
    [h,pv,ci,stats]=ttest(paco);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(paco)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated population standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated population standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated population standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;acoc];
    ET=[ET;acot];
@@ -5514,46 +5551,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamica)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamaica)];
    [h,pv,ci,stats]=ttest(pica);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(pica)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated population standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated population standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated population standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;icac];
    ET=[ET;icat];
@@ -5644,46 +5681,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamla)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamala)];
    [h,pv,ci,stats]=ttest(pla);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(pla)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated population standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated population standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated population standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;lac];
    ET=[ET;lat];
@@ -5774,46 +5811,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamhts)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamahts)];
    [h,pv,ci,stats]=ttest(phts);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(phts)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated popuhtstion standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated popuhtstion standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated popuhtstion standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;htsc];
    ET=[ET;htst];
@@ -5904,46 +5941,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamfoa)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamafoa)];
    [h,pv,ci,stats]=ttest(pfoa);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(pfoa)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated popufoation standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated popufoation standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated popufoation standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;foac];
    ET=[ET;foat];
@@ -6034,46 +6071,46 @@ if x==1
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamdsos)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamadsos)];
    [h,pv,ci,stats]=ttest(pdsos);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(pdsos)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,' :',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,' :',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,':',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,':',num2str(stats.df))];
    end
    if cr==1
       res=[res;strcat('The estimated popudsostion standard deviation for error:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated popudsostion standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated popudsostion standard deviation for ',y_label,':',num2str(stats.sd))]; 
    end
    NOF=[NOF;dsosc];
    ET=[ET;dsost];
@@ -6126,7 +6163,7 @@ if x==1
    if cr==1
       res=[res;strcat('The estimated popudsostion standard deviation for corredsostion:',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated popudsostion standard deviation for error:',num2str(stats.sd))];
+      res=[res;strcat('The estimated popudsostion standard deviation for error: ',num2str(stats.sd))];
    end
    res=[res;dline];
    [a,b]=size(hamcdsos);
@@ -6157,53 +6194,53 @@ if x==1
     alname=cellstr(alname);
    st=[st,'CUK'];
    res=[res;'Algorithm name : CUK'];
-   res=[res;strcat('Number of selected features : ',cukc)];
+   res=[res;strcat('Number of selected features: ',cukc)];
    res=[res;'The selected feature indices are :'];
    res=[res;(cukf)];
-   res=[res;strcat('Ecukpsed time per one time run based on seconds:',cukt)];
+   res=[res;strcat('Ecukpsed time per one time run based on seconds: ',cukt)];
    if cr==1
       res=[res;'The convergence values of RMSEare:'];
    else
-      res=[res;'The convergence values of accuracy are:']; 
+      res=[res;'The convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamcuk)];
    if cr==1
       res=[res;'The average convergence values of RMSEare:'];
    else
-      res=[res;'The average convergence values of accuracy are:']; 
+      res=[res;'The average convergence values of ',y_label,' are:']; 
    end
    res=[res;num2str(hamacuk)];
    [h,pv,ci,stats]=ttest(pcuk);
    if cr==1
       res=[res;'The stability values of RMSEare:'];
    else
-      res=[res;'The stability values of accuracy are:']; 
+      res=[res;'The stability values of ',y_label,' are:']; 
    end
    res=[res;num2str(pcuk)];
    if cr==1
       res=[res;strcat('p-value of RMSE:',num2str(pv))];
    else
-       res=[res;strcat('p-value of accuracy :',num2str(pv))];
+       res=[res;strcat('p-value of ',y_label,': ',num2str(pv))];
    end
    if cr==1
       res=[res;strcat('Confidence interval of RMSE:',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of accuracy :',num2str(ci))];
+      res=[res;strcat('Confidence interval of ',y_label,': ',num2str(ci))];
    end
    if cr==1
       res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for accuracy:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for ',y_label,': ',num2str(stats.tstat))];
    end
    if cr==1
       res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for accuracy:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for ',y_label,': ',num2str(stats.df))];
    end
    if cr==1
-      res=[res;strcat('The estimated popucuktion standard deviation for error:',num2str(stats.sd))];
+      res=[res;strcat('The estimated popucuktion standard deviation for error: ',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated popucuktion standard deviation for accuracy:',num2str(stats.sd))]; 
+      res=[res;strcat('The estimated popucuktion standard deviation for ',y_label,': ',num2str(stats.sd))]; 
    end
    NOF=[NOF;cukc];
    ET=[ET;cukt];
@@ -6228,35 +6265,35 @@ if x==1
    res=[res;num2str(hamcacuk)];
    [h,pv,ci,stats]=ttest(pccuk);
    if cr==1
-      res=[res;'The stability values of correcuktion are:'];
+      res=[res;'The stability values of correcuktion are: '];
    else
-      res=[res;'The stability values of RMSEare:']; 
+      res=[res;'The stability values of RMSEare: ']; 
    end
    res=[res;num2str(pccuk)];
    if cr==1
-      res=[res;strcat('p-value of correcuktion :',num2str(pv))];
+      res=[res;strcat('p-value of correlation: ',num2str(pv))];
    else
       res=[res;strcat('p-value of RMSE:',num2str(pv))]; 
    end
    if cr==1
-      res=[res;strcat('Confidence interval of correcuktion :',num2str(ci))];
+      res=[res;strcat('Confidence interval of correcuktion: ',num2str(ci))];
    else
-      res=[res;strcat('Confidence interval of RMSE:',num2str(ci))]; 
+      res=[res;strcat('Confidence interval of RMSE: ',num2str(ci))]; 
    end
    if cr==1
-      res=[res;strcat('The value of the test static for correcuktion:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for correcuktion: ',num2str(stats.tstat))];
    else
-      res=[res;strcat('The value of the test static for error:',num2str(stats.tstat))];
+      res=[res;strcat('The value of the test static for error: ',num2str(stats.tstat))];
    end
    if cr==1
-      res=[res;strcat('The degree of freedom of the test for correcuktion:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for correcuktion: ',num2str(stats.df))];
    else
-      res=[res;strcat('The degree of freedom of the test for error:',num2str(stats.df))];
+      res=[res;strcat('The degree of freedom of the test for error: ',num2str(stats.df))];
    end
    if cr==1
-      res=[res;strcat('The estimated popucuktion standard deviation for correcuktion:',num2str(stats.sd))];
+      res=[res;strcat('The estimated popucuktion standard deviation for correcuktion: ',num2str(stats.sd))];
    else
-      res=[res;strcat('The estimated popucuktion standard deviation for error:',num2str(stats.sd))];
+      res=[res;strcat('The estimated popucuktion standard deviation for error: ',num2str(stats.sd))];
    end
    res=[res;dline];
    [a,b]=size(hamccuk);
@@ -6288,17 +6325,17 @@ if cr==1
     title('Convergence of error');
     ylabel('Error');
 else
-    ylabel('Accuracy');
-    title('Convergence of accuracy');
+    ylabel(y_label);
+    title(['Convergence of ',' ',y_label]);
 end
 subplot(2,3,2),legend(st);
 xlabel('Iteration');
 if cr==1
-ylabel('Average RMSEof all samples');
+ylabel('Average RMSE of all samples');
 title('Average convegence of error');
 else
-ylabel('Average accuracy of all samples');
-title('Average convegence of accuracy');
+ylabel(['Average',' ',y_label,' of all samples']);
+title(['Average convegence of',' ',y_label]);
 end
 subplot(2,3,3),legend(st);
 xlabel('Execution number');
@@ -6306,8 +6343,8 @@ if cr==1
 ylabel('Error');
 title('Stability diagram of error');
 else
-ylabel('Accuracy');
-title('Stability diagram of accuracy');
+ylabel(y_label);
+title(['Convergence of',' ',y_label]);
 end
 subplot(2,3,4),legend(st);
 xlabel('Iteration');
@@ -6348,6 +6385,7 @@ alname=cellstr(alname);
 AL_NAME=alname;
 
 t=clock;
+%saveas(f1,strcat('results/Diagram_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6))),'fig');
 fid=fopen(strcat('results\Description_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6)),'.txt'),'at');
 for i=1:size(res,1)
     fprintf(fid,'%s\n',res{i,:});
@@ -6362,10 +6400,18 @@ else
    ER_CI=CR_CI;
    ER_P=CR_P;
    ER_TS=CR_TS;
-   T = table(AL_NAME,NOF,ET,AC,AC_STD,AC_CI,AC_P,AC_TS,ER,ER_STD,ER_CI,ER_P,ER_TS);
+   SC=AC;
+   SC_STD=AC_STD;
+   SC_CI=AC_CI;
+   SC_P=AC_P;
+   SC_TS=AC_TS;
+   T = table(AL_NAME,NOF,ET,SC,SC_STD,SC_CI,SC_P,SC_TS,ER,ER_STD,ER_CI,ER_P,ER_TS);
 end
 writetable(T,strcat('results\tbls_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6)),'.xls'));
-
+sv=get(handles.edit9,'string');
+if contains(sv,'-v')
+    cr=1;
+end
 if cr==0
    loadedfile=get(handles.edit1,'string');
    input=importdata(loadedfile);
@@ -6373,7 +6419,6 @@ if cr==0
    label=input(:,labelc);
    input(:,labelc)=[];
    val=get(handles.checkbox23,'value');
-   sv=get(handles.edit9,'string');
    if val==1
       input(1,:)=[];
    end
@@ -6389,7 +6434,11 @@ if cr==0
    FPR=[];
    ACC=[];
    x=get(handles.checkbox12,'value'); 
-   figure;
+   ct=get(handles.popupmenu2,'value');
+   iteration=get(handles.edit79,'string');
+   iteration=str2num(iteration);
+   
+   ff2=figure;
    subplot(1,2,2),plot(0:.1:1,0:.1:1,'--r');
    hold on;
    text(.4,.4,'\rightarrow','FontSize',20,'Rotation',135);
@@ -6407,7 +6456,7 @@ if cr==0
    ylabel('TPR');
    hold on;
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fwcc,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fwcc,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6422,7 +6471,7 @@ if cr==0
    end
     x=get(handles.checkbox13,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(flca,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(flca,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6437,7 +6486,7 @@ if cr==0
    end
     x=get(handles.checkbox14,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fga,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fga,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6452,7 +6501,7 @@ if cr==0
    end
     x=get(handles.checkbox15,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fpso,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fpso,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6467,7 +6516,7 @@ if cr==0
    end
     x=get(handles.checkbox16,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(faco,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(faco,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6482,7 +6531,7 @@ if cr==0
    end
     x=get(handles.checkbox17,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fica,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fica,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6497,7 +6546,7 @@ if cr==0
    end
     x=get(handles.checkbox18,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fla,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fla,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6512,7 +6561,7 @@ if cr==0
    end
     x=get(handles.checkbox19,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fhts,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fhts,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6527,7 +6576,7 @@ if cr==0
    end
     x=get(handles.checkbox20,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(ffoa,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(ffoa,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6542,7 +6591,7 @@ if cr==0
    end
     x=get(handles.checkbox21,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fdsos,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fdsos,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6557,7 +6606,7 @@ if cr==0
    end
     x=get(handles.checkbox22,'value'); 
    if x==1
-      [sen,spc,pre,fpk,acc]=tptn(fcuk,input,dp,label,sv); 
+      [sen,spc,pre,fpk,acc]=tptn(fcuk,input,dp,label,sv,ct,iteration); 
       SEN=[SEN;sen];
       SPC=[SPC;spc];
       PRE=[PRE;pre];
@@ -6572,9 +6621,10 @@ if cr==0
    end
    subplot(1,2,1),legend(alname);
    subplot(1,2,2),legend(alname);
-   EVALUATION = table(AL_NAME,SEN,PRE,FPR,ACC);
+   EVALUATION = table(AL_NAME,SEN,SPC,PRE,FPR,ACC);
    writetable(EVALUATION,strcat('results\evaluation_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6)),'.xls'));
 end
+%saveas(f1,strcat('results/ROC_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6))),'fig');
 clc
 res
 T
@@ -6636,8 +6686,24 @@ function checkbox25_Callback(hObject, eventdata, handles)
 % hObject    handle to checkbox25 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
 % Hint: get(hObject,'Value') returns toggle state of checkbox25
+cr=get(handles.checkbox25,'value');
+set(handles.popupmenu3,'value',2);
+set(handles.popupmenu3,'enable','on');
+% set(handles.checkbox39,'enable','on');
+% set(handles.checkbox40,'enable','on');
+% set(handles.checkbox41,'enable','on');
+set(handles.checkbox39,'value',0);
+set(handles.checkbox40,'value',0);
+set(handles.checkbox41,'value',0);
+set(handles.checkbox37,'value',1);
+if cr==1
+    set(handles.popupmenu3,'value',1);
+    set(handles.popupmenu3,'enable','off'); 
+%     set(handles.checkbox39,'enable','off');
+%     set(handles.checkbox40,'enable','off');
+%     set(handles.checkbox41,'enable','off');
+end
 
 
 % --- Executes on button press in pushbutton25.
@@ -6660,3 +6726,776 @@ k=get(gcf,'CurrentKey');
 if strcmp(k,'windows')
     open('help\Tutorial for FEATURESELECT.pdf');
 end
+
+
+% --- Executes on selection change in popupmenu2.
+function popupmenu2_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu2 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu2
+x=get(handles.popupmenu2,'value');
+if x==1
+    set(handles.uipanel5,'visible','on');
+    set(handles.uipanel27,'visible','off');
+    set(handles.uipanel28,'visible','off');
+end
+if (x==2)
+    set(handles.uipanel27,'visible','on');
+    set(handles.uipanel28,'visible','off');
+    set(handles.uipanel5,'visible','off');
+    set(handles.pushbutton28,'enable','on');
+    set(handles.pushbutton29,'enable','off');
+end
+if (x==3)
+    set(handles.uipanel28,'visible','on');
+    set(handles.uipanel27,'visible','off');
+    set(handles.uipanel5,'visible','off');
+    set(handles.pushbutton28,'enable','off');
+    set(handles.pushbutton29,'enable','on');
+end
+
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu2_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on selection change in popupmenu3.
+function popupmenu3_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu3 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu3
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu3_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on selection change in popupmenu4.
+function popupmenu4_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+x=get(handles.popupmenu4,'value');
+set(handles.uipanel29,'visible','off');
+set(handles.uipanel23,'visible','off');
+if x==1
+    set(handles.uipanel23,'visible','on');
+else
+    set(handles.uipanel29,'visible','on');
+end
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu4 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu4
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu4_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- If Enable == 'on', executes on mouse press in 5 pixel border.
+% --- Otherwise, executes on mouse press in 5 pixel border or over popupmenu4.
+function popupmenu4_ButtonDownFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton26.
+function pushbutton26_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton26 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on selection change in popupmenu5.
+function popupmenu5_Callback(hObject, eventdata, handles)
+% hObject    handle to popupmenu5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: contents = cellstr(get(hObject,'String')) returns popupmenu5 contents as cell array
+%        contents{get(hObject,'Value')} returns selected item from popupmenu5
+
+
+% --- Executes during object creation, after setting all properties.
+function popupmenu5_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to popupmenu5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: popupmenu controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pushbutton28.
+function pushbutton28_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton28 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+clc
+tic;
+str1='Please wait ...';
+str2='Neural network is running';
+str1=cellstr(str1);
+str2=cellstr(str2);
+st=[str2;str1];
+set(handles.listbox1,'string',st);
+pause(1);
+tp=get(handles.edit10,'string');
+tp=str2num(tp);
+tp=tp/100;
+sv=get(handles.edit9,'string');
+nopar= 1;
+loadedfile=get(handles.edit1,'string');
+input=importdata(loadedfile);
+labelc=str2num(get(handles.edit2,'string'));
+val=get(handles.checkbox23,'value');
+if val==1
+   input(1,:)=[];
+end
+val=get(handles.checkbox24,'value');
+if val==1
+   input(:,1)=[];
+end
+[m,n]=size(input);
+n=n-1;
+label=input(:,labelc);
+input(:,labelc)=[];
+iteration=get(handles.edit79,'string');
+iteration=str2num(iteration);
+cr=get(handles.checkbox25,'value');
+[ sen,spc,prc,acc,err,crr ] = neural_network( input,label,iteration,tp,cr );
+se=['The value of error is : ',num2str(err)];
+se=cellstr(se);
+sc=['The value of correlation is : ',num2str(crr)];
+sc=cellstr(sc);
+sa=['The value of accuracy is : ',num2str(acc)];
+sa=cellstr(sa);
+sp=['The value of precision is : ',num2str(prc)];
+sp=cellstr(sp);
+spc=['The value of specificity is : ',num2str(spc)];
+spc=cellstr(spc);
+ss=['The value of sensitivity is : ',num2str(sen)];
+ss=cellstr(ss);
+if cr==1
+   st=[se;sc]; 
+else
+   st=[sa;spc;ss;sp;se;sc]; 
+end
+set(handles.listbox1, 'String',st);
+st = cellstr(get(handles.listbox1,'string'));
+st2=['The elapsed time of Nueral network based on seconds is : ',num2str(toc)];
+st2=cellstr(st2);
+set(handles.listbox1, 'String',[st;st2]);
+clc
+
+
+% --- Executes on button press in pushbutton29.
+function pushbutton29_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton29 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+clc
+tic;
+str1='Please wait ...';
+str2='Decision tree is running';
+str1=cellstr(str1);
+str2=cellstr(str2);
+st=[str2;str1];
+set(handles.listbox1,'string',st);
+pause(1);
+tp=get(handles.edit10,'string');
+tp=str2num(tp);
+tp=tp/100;
+sv=get(handles.edit9,'string');
+nopar= 1;
+loadedfile=get(handles.edit1,'string');
+input=importdata(loadedfile);
+labelc=str2num(get(handles.edit2,'string'));
+val=get(handles.checkbox23,'value');
+if val==1
+   input(1,:)=[];
+end
+val=get(handles.checkbox24,'value');
+if val==1
+   input(:,1)=[];
+end
+[m,n]=size(input);
+n=n-1;
+particles=1:n+3;
+label=input(:,labelc);
+input(:,labelc)=[];
+particles=score(particles,input,label,tp,sv);
+x=get(handles.checkbox25,'value');
+if x==1
+st='The value of RMSE is: ';
+else
+st='The value of score is: ';    
+end
+if x==1
+st=strcat(st,num2str(particles(1,n+2)));
+else
+st=strcat(st,num2str(-particles(1,n+2)));
+end
+set(handles.listbox1, 'String',st);
+st = cellstr(get(handles.listbox1,'string'));
+st2='The elapsed time of Decision tree based on seconds is:  ';
+st2=strcat(st2,num2str(toc));
+st3='The value of correlation is: ';
+st3=strcat(st3,num2str(particles(1,n+3)));
+set(handles.listbox1, 'String',[st;st2;st3]);
+clc
+
+
+% --- Executes during object creation, after setting all properties.
+function figure1_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to figure1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+
+
+function edit79_Callback(hObject, eventdata, handles)
+% hObject    handle to edit79 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit79 as text
+%        str2double(get(hObject,'String')) returns contents of edit79 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit79_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit79 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in pushbutton32.
+function pushbutton32_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton32 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+clc
+tic;
+tp=get(handles.edit10,'string');
+tp=str2num(tp);
+sv=get(handles.edit9,'string');
+loadedfile=get(handles.edit1,'string');
+input=importdata(loadedfile);
+labelc=str2num(get(handles.edit2,'string'));
+val=get(handles.checkbox23,'value');
+if val==1
+   input(1,:)=[];
+end
+val=get(handles.checkbox24,'value');
+if val==1
+   input(:,1)=[];
+end
+label=input(:,labelc);
+input(:,labelc)=[];
+nof=get(handles.edit63,'string');
+nof=str2num(nof);
+SEN=[];
+SPC=[];
+PRE=[];
+FPR=[];
+ACC=[];
+ERR=[];
+CR=[];
+ct=get(handles.popupmenu2,'value');
+iteration=get(handles.edit79,'string');
+iteration=str2num(iteration);
+rc=get(handles.checkbox25,'value');
+alname='';
+if rc==0
+    ff2=figure;
+    subplot(1,2,2),plot(0:.1:1,0:.1:1,'--r');
+    hold on;
+    text(.4,.4,'\rightarrow','FontSize',20,'Rotation',135);
+    text(.4,.4,'\rightarrow','FontSize',20,'Rotation',-45);
+    text(.3,.5,'Beter');
+    text(.4,.3,'Worse');
+    title('ROC space');
+    xlabel('FPR');
+    ylabel('TPR');
+    %alname=cellstr(alname);
+    %alname=[cellstr('Random guess');alname];
+    subplot(1,2,1),plot(0:.1:1,0:.1:1,'--r');
+    title('ROC');
+    xlabel('FPR');
+    ylabel('TPR');
+    hold on;
+end
+res=[];
+res='This application has been developed in laboratory of systems biology and bioinformatics (LBB)';
+res=cellstr(res);
+dline='---------------------------------------------------------------------------------------------';
+dline=cellstr(dline);
+res=[dline;res];
+res=[dline;res];
+res=[res;dline];
+res=[res;dline];
+x=get(handles.checkbox37,'value');
+if x==1
+    str1='Please wait ...';
+    str2='Pearson correlation is calculating';
+    str1=cellstr(str1);
+    str2=cellstr(str2);
+    st=[str2;str1];
+    set(handles.listbox1,'string',st);
+    pause(1);
+   sen=[];
+   spc=[];
+   pre=[];
+   fpk=[];
+   acc=[];
+   err=[];
+   crr=[];
+   alname=[alname;'Pearson correlation']; 
+   alname=cellstr(alname);
+   features=pearson_correlation(input,nof);
+   res=[res;'Method name : Perason correlation'];
+   res=[res;'The selected feature indices are :'];
+   res=[res;num2str(features)];
+   res=[res;dline];
+   res=[res;dline];
+   if rc==0
+      [sen,spc,pre,fpk,acc]=tptn(features,input,tp,label,sv,ct,iteration);
+   end
+   if rc==1
+      [err,crr]=filter_err(features,input,tp,label,sv,ct,iteration);
+   end
+   SEN=[SEN;sen];
+   SPC=[SPC;spc];
+   PRE=[PRE;pre];
+   FPR=[FPR;fpk];
+   ACC=[ACC;acc];
+   ERR=[ERR;err];
+   CR=[CR;crr];
+   if rc==0
+       h=[0 1-spc 1];
+       v=[0 sen 1];
+       subplot(1,2,2),plot(h(1,2),v(1,2),'d','linewidth',1);
+       hold on;
+       subplot(1,2,1),plot(h,v,'-d','linewidth',1);
+       hold on;
+   end
+end
+x=get(handles.checkbox38,'value');
+if x==1
+    str1='Please wait ...';
+    str2='Laplacian scoring is calculating';
+    str1=cellstr(str1);
+    str2=cellstr(str2);
+    st=[str2;str1];
+    set(handles.listbox1,'string',st);
+    pause(1);
+   sen=[];
+   spc=[];
+   pre=[];
+   fpk=[];
+   acc=[];
+   err=[];
+   crr=[];
+   alname=[alname;'Laplacian']; 
+   alname=cellstr(alname);
+   features=laplacian(input,nof);
+   res=[res;'Method name : Laplacian'];
+   res=[res;'The selected feature indices are :'];
+   res=[res;num2str(features)];
+   res=[res;dline];
+   res=[res;dline];
+   if rc==0
+      [sen,spc,pre,fpk,acc]=tptn(features,input,tp,label,sv,ct,iteration);
+   end
+   if rc==1
+      [err,crr]=filter_err(features,input,tp,label,sv,ct,iteration);
+   end
+   SEN=[SEN;sen];
+   SPC=[SPC;spc];
+   PRE=[PRE;pre];
+   FPR=[FPR;fpk];
+   ACC=[ACC;acc];
+   ERR=[ERR;err];
+   CR=[CR;crr];
+   if rc==0
+       h=[0 1-spc 1];
+       v=[0 sen 1];
+       subplot(1,2,2),plot(h(1,2),v(1,2),'s','linewidth',1);
+       hold on;
+       subplot(1,2,1),plot(h,v,'-s','linewidth',1);
+       hold on;
+   end
+end
+x=get(handles.checkbox39,'value');
+if x==1
+    str1='Please wait ...';
+    str2='Entropy scoring is calculating';
+    str1=cellstr(str1);
+    str2=cellstr(str2);
+    st=[str2;str1];
+    set(handles.listbox1,'string',st);
+    pause(1);
+   sen=[];
+   spc=[];
+   pre=[];
+   fpk=[];
+   acc=[];
+   err=[];
+   crr=[];
+   alname=[alname;'Entropy']; 
+   alname=cellstr(alname);
+   features=entropy(input,nof);
+   res=[res;'Method name : Entropy'];
+   res=[res;'The selected feature indices are :'];
+   res=[res;num2str(features)];
+   res=[res;dline];
+   res=[res;dline];
+   if rc==0
+      [sen,spc,pre,fpk,acc]=tptn(features,input,tp,label,sv,ct,iteration);
+   end
+   if rc==1
+      [err,crr]=filter_err(features,input,tp,label,sv,ct,iteration);
+   end
+   SEN=[SEN;sen];
+   SPC=[SPC;spc];
+   PRE=[PRE;pre];
+   FPR=[FPR;fpk];
+   ACC=[ACC;acc];
+   ERR=[ERR;err];
+   CR=[CR;crr];
+   if rc==0
+       h=[0 1-spc 1];
+       v=[0 sen 1];
+       subplot(1,2,2),plot(h(1,2),v(1,2),'x','linewidth',1);
+       hold on;
+       subplot(1,2,1),plot(h,v,'-x','linewidth',1);
+       hold on;
+   end
+end
+x=get(handles.checkbox40,'value');
+if x==1
+    str1='Please wait ...';
+    str2='Mutual information scoring is calculating';
+    str1=cellstr(str1);
+    str2=cellstr(str2);
+    st=[str2;str1];
+    set(handles.listbox1,'string',st);
+    pause(1);
+   sen=[];
+   spc=[];
+   pre=[];
+   fpk=[];
+   acc=[];
+   err=[];
+   crr=[];
+   alname=[alname;'Mutual information']; 
+   alname=cellstr(alname);
+   features=mutual(input,nof);
+   res=[res;'Method name : Mutual information'];
+   res=[res;'The selected feature indices are :'];
+   res=[res;num2str(features)];
+   res=[res;dline];
+   res=[res;dline];
+   if rc==0
+      [sen,spc,pre,fpk,acc]=tptn(features,input,tp,label,sv,ct,iteration);
+   end
+   if rc==1
+      [err,crr]=filter_err(features,input,tp,label,sv,ct,iteration);
+   end
+   SEN=[SEN;sen];
+   SPC=[SPC;spc];
+   PRE=[PRE;pre];
+   FPR=[FPR;fpk];
+   ACC=[ACC;acc];
+   ERR=[ERR;err];
+   CR=[CR;crr];
+   if rc==0
+       h=[0 1-spc 1];
+       v=[0 sen 1];
+       subplot(1,2,2),plot(h(1,2),v(1,2),'<','linewidth',1);
+       hold on;
+       subplot(1,2,1),plot(h,v,'-<','linewidth',1);
+       hold on;
+   end
+end
+x=get(handles.checkbox41,'value');
+if x==1
+    str1='Please wait ...';
+    str2='Fisher scoring is calculating';
+    str1=cellstr(str1);
+    str2=cellstr(str2);
+    st=[str2;str1];
+    set(handles.listbox1,'string',st);
+    pause(1);
+   sen=[];
+   spc=[];
+   pre=[];
+   fpk=[];
+   acc=[];
+   err=[];
+   crr=[];
+   alname=[alname;'Fisher']; 
+   alname=cellstr(alname);
+   features=fisher(input,nof,label);
+   res=[res;'Method name : Fisher'];
+   res=[res;'The selected feature indices are :'];
+   res=[res;num2str(features)];
+   res=[res;dline];
+   res=[res;dline];
+   if rc==0
+      [sen,spc,pre,fpk,acc]=tptn(features,input,tp,label,sv,ct,iteration);
+   end
+   if rc==1
+      [err,crr]=filter_err(features,input,tp,label,sv,ct,iteration);
+   end
+   SEN=[SEN;sen];
+   SPC=[SPC;spc];
+   PRE=[PRE;pre];
+   FPR=[FPR;fpk];
+   ACC=[ACC;acc];
+   ERR=[ERR;err];
+   CR=[CR;crr];
+   if rc==0
+       h=[0 1-spc 1];
+       v=[0 sen 1];
+       subplot(1,2,2),plot(h(1,2),v(1,2),'>','linewidth',1);
+       hold on;
+       subplot(1,2,1),plot(h,v,'->','linewidth',1);
+       hold on;
+   end
+end
+st1='The selcted methods were performed';
+st1=cellstr(st1);
+st2='The results are available in program directory';
+st2=cellstr(st2);
+ne = [st1;st2];
+set(handles.listbox1,'String',ne);
+METHOD=alname;
+t=clock;
+if rc==1
+   T=table(METHOD,ERR,CR) 
+   writetable(T,strcat('results\erro_and_correlation_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6)),'.xls'));
+end
+if rc==0
+   alname=[cellstr('Random guess');alname];
+   subplot(1,2,1),legend(alname);
+   subplot(1,2,2),legend(alname);
+   T=table(METHOD,SEN,SPC,PRE,FPR,ACC) 
+   writetable(T,strcat('results\evaluation_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6)),'.xls'));
+end
+t=clock;
+res
+%saveas(f1,strcat('results/Diagram_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6))),'fig');
+fid=fopen(strcat('results\Description_',num2str(t(1,1)),'_',num2str(t(1,2)),'_',num2str(t(1,3)),'_',num2str(t(1,4)),'_',num2str(t(1,5)),'_',num2str(t(1,6)),'.txt'),'at');
+for i=1:size(res,1)
+    fprintf(fid,'%s\n',res{i,:});
+end
+fclose(fid);
+
+
+% --- Executes on button press in checkbox37.
+function checkbox37_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox37 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+c=0;
+set(handles.pushbutton32,'enable','on'); 
+x=get(handles.checkbox37,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox38,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox39,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox40,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox41,'value');
+if x==1
+    c=c+1;
+end
+if c==0
+   set(handles.pushbutton32,'enable','off'); 
+end
+% Hint: get(hObject,'Value') returns toggle state of checkbox37
+
+
+% --- Executes on button press in checkbox38.
+function checkbox38_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox38 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+c=0;
+set(handles.pushbutton32,'enable','on'); 
+x=get(handles.checkbox37,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox38,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox39,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox40,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox41,'value');
+if x==1
+    c=c+1;
+end
+if c==0
+   set(handles.pushbutton32,'enable','off'); 
+end
+% Hint: get(hObject,'Value') returns toggle state of checkbox38
+
+
+% --- Executes on button press in checkbox39.
+function checkbox39_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox39 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+c=0;
+set(handles.pushbutton32,'enable','on'); 
+x=get(handles.checkbox37,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox38,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox39,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox40,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox41,'value');
+if x==1
+    c=c+1;
+end
+if c==0
+   set(handles.pushbutton32,'enable','off'); 
+end
+% Hint: get(hObject,'Value') returns toggle state of checkbox39
+
+
+% --- Executes on button press in checkbox40.
+function checkbox40_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox40 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+c=0;
+set(handles.pushbutton32,'enable','on'); 
+x=get(handles.checkbox37,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox38,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox39,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox40,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox41,'value');
+if x==1
+    c=c+1;
+end
+if c==0
+   set(handles.pushbutton32,'enable','off'); 
+end
+% Hint: get(hObject,'Value') returns toggle state of checkbox40
+
+
+% --- Executes on button press in checkbox41.
+function checkbox41_Callback(hObject, eventdata, handles)
+% hObject    handle to checkbox41 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+c=0;
+set(handles.pushbutton32,'enable','on'); 
+x=get(handles.checkbox37,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox38,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox39,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox40,'value');
+if x==1
+    c=c+1;
+end
+x=get(handles.checkbox41,'value');
+if x==1
+    c=c+1;
+end
+if c==0
+   set(handles.pushbutton32,'enable','off'); 
+end
+% Hint: get(hObject,'Value') returns toggle state of checkbox41
